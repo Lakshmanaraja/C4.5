@@ -112,6 +112,7 @@ class C45:
 			return False
 		else:
 			return True
+		
 	def gain(self,unionSet, subsets):
 		#input : data and disjoint subsets of it
 		#output : information gain
