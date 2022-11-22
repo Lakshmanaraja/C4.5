@@ -44,9 +44,9 @@ class C45:
 				#discrete
 				for index,child in enumerate(node.children):
 					if child.isLeaf:
-						print(indent + node.label + " = " + attributes[index] + " : " + child.label)
+						print(indent + node.label + " = " + self.attributes[index] + " : " + child.label)
 					else:
-						print(indent + node.label + " = " + attributes[index] + " : ")
+						print(indent + node.label + " = " + self.attributes[index] + " : ")
 						self.printNode(child, indent + "	")
 			else:
 				#numerical
