@@ -112,6 +112,21 @@ class C45:
 			return False
 		else:
 			return True
+	def gain(self,unionSet, subsets):
+		#input : data and disjoint subsets of it
+		#output : information gain
+		S = len(unionSet)
+		#calculate impurity before split
+		impurityBeforeSplit = self.entropy(unionSet)
+		#calculate impurity after split
+		weights = [len(subset)/S for subset in subsets]
+		impurityAfterSplit = 0
+		for i in range(len(subsets)):
+			impurityAfterSplit += weights[i]*self.entropy(subsets[i])
+		#calculate total gain
+		totalGain = impurityBeforeSplit - impurityAfterSplit
+		return totalGain
+
 
 	def splitAttribute(self, curData, curAttributes):
 		splitted = []
@@ -161,21 +176,7 @@ class C45:
 							best_threshold = threshold
 		return (best_attribute,best_threshold,splitted)
 
-	def gain(self,unionSet, subsets):
-		#input : data and disjoint subsets of it
-		#output : information gain
-		S = len(unionSet)
-		#calculate impurity before split
-		impurityBeforeSplit = self.entropy(unionSet)
-		#calculate impurity after split
-		weights = [len(subset)/S for subset in subsets]
-		impurityAfterSplit = 0
-		for i in range(len(subsets)):
-			impurityAfterSplit += weights[i]*self.entropy(subsets[i])
-		#calculate total gain
-		totalGain = impurityBeforeSplit - impurityAfterSplit
-		return totalGain
-
+	
 	def entropy(self, dataSet):
 		S = len(dataSet)
 		if S == 0:
