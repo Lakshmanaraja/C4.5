@@ -184,7 +184,6 @@ class C45:
 			return 0
 		num_classes = [0 for i in self.classes]
 		for row in dataSet:
-			print(list(self.classes))
 			classIndex = list(self.classes).index(row[-1])
 			num_classes[classIndex] += 1
 		num_classes = [x/S for x in num_classes]
